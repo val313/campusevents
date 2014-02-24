@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @event.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @event.end_date %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @event.url %>
+</p>
+
+<p>
+  <strong>Sponsors:</strong>
+ <% @event.sponsors.each do |s| %>
+          <br><%= s.name %>
+          <%end%>
+ </p>
+ <%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
+
+
+
+ <% content_for(:sidebar) do %>
+  <div>
+ 	<table>
+  <thead>
+    <tr>
+      <th>Meeting Name</th>
+      <th>Start Time</th>
+      <th>End time</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+  <strong>Meetings:</strong>
+		 <% @event.meetings.each do |s| %>
+		    <tr>
+		     <td><%= s.name %></td>
+		     <td><%= s.start_time %></td>
+		     <td><%= s.end_time %></td>
+		     <td><%= s.location.name %></td>
+		 </tr>
+		 <%end%>
+   </tbody>
+  </table>
+ </div>
+ <% end %>
+
+
+
